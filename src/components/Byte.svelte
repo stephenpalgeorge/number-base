@@ -16,3 +16,10 @@
     <Bit state={bit === '1'} />
   {/each}
 </section>
+
+<style>
+  section {
+    display: flex;
+    align-items: baseline;
+  }
+</style>

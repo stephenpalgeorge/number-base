@@ -3,7 +3,25 @@
 </script>
 
 <div class="bit bit--{state ? 'on' : 'off'}">
-  <pre>
+  <!-- <pre>
     { JSON.stringify(state) }
-  </pre>
+  </pre> -->
 </div>
+
+<style>
+  .bit {
+    width: 2rem;
+    margin: 0 1rem;
+    background-color: black;
+  }
+
+  .bit--on {
+    height: 6rem;
+    border-radius: 1rem;
+  }
+
+  .bit--off {
+    height: 2rem;
+    border-radius: 50%;
+  }
+</style>
