@@ -1,9 +1,13 @@
 <script>
   import Byte from './components/Byte.svelte';
+  import NumberInput from './components/NumberInput.svelte';
+
+  let decimalValue = 127;
 </script>
 
 <main>
-  <Byte decimalValue={147} />
+  <Byte bind:decimalValue={decimalValue} />
+  <NumberInput bind:value={decimalValue} />
 </main>
 
 <style>

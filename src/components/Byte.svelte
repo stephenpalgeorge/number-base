@@ -20,6 +20,7 @@
 <style>
   section {
     display: flex;
-    align-items: baseline;
+    align-items: flex-end;
+    height: 6rem;
   }
 </style>
