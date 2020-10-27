@@ -3,5 +3,5 @@
 </script>
 
 <main>
-  <Byte decimalValue={255} />
+  <Byte decimalValue={9} />
 </main>
