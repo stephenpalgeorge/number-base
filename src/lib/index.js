@@ -58,3 +58,34 @@ export function renderAsByte(binValue) {
   // join the spaces and the binValue together as a final, 8-char string.
   return [...spaces, ...binValueAsArray].join('');
 }
+
+
+/**
+ * FUNCTION - renderDigits
+ * This function takes a string that is a number in a base other than decimal.
+ * It then forces that number to display with a certain number of digits. So 'a'
+ * could become '0a' for example.
+ * @param {String} num = the value to be manipulated.
+ * @param {Number} digits = the number of digits that should be returned.
+ */
+export function renderDigits(num, digits) {
+  // ----------
+  // HANDLE NUM PARAM
+  // ----------
+  if (typeof num !== 'string') throw new Error('num value must be presented as a string');
+
+  // ----------
+  // HANDLE DIGITS PARAM
+  // ----------
+  // force number type
+  if (isNaN(digits)) digits = Number(digits);
+  // force integer value
+  digits = Math.floor(digits);
+
+  const numAsArray = num.split('');
+  // only proceed if the length of the num is less than digits
+  if (numAsArray.length >= digits) return num;
+  const spaces = [...Array(digits - numAsArray.length)].map(() => '0');
+  // join the spaces and the binValue together as a final, 8-char string.
+  return [...spaces, ...numAsArray].join('');
+}
