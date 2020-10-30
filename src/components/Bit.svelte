@@ -12,12 +12,14 @@
   .bit {
     width: 2rem;
     margin: 0 1rem;
-    background-color: black;
+    background-color: #fff;
+
+    transition: height .2s ease-out;
   }
 
   .bit--on {
     height: 6rem;
-    border-radius: 1rem;
+    border-radius: 999px;
   }
 
   .bit--off {

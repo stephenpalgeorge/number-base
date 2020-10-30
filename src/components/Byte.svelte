@@ -8,7 +8,6 @@
   export let decimalValue = 0;
   $: binaryValue = toBase(decimalValue, 2);
   $: byteValue = renderAsByte(binaryValue);
-  $: console.log(renderAsByte(binaryValue));
 </script>
 
 <section>
@@ -22,5 +21,6 @@
     display: flex;
     align-items: flex-end;
     height: 6rem;
+    margin-top: -4rem;
   }
 </style>
