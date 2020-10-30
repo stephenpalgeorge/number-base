@@ -6,13 +6,14 @@
   import Bit from './Bit.svelte';
 
   export let decimalValue = 0;
+  export let bgColor;
   $: binaryValue = toBase(decimalValue, 2);
   $: byteValue = renderAsByte(binaryValue);
 </script>
 
 <section>
   {#each byteValue as bit}
-    <Bit state={bit === '1'} />
+    <Bit state={bit === '1'} borderColor={bgColor} />
   {/each}
 </section>
 

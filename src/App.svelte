@@ -27,6 +27,7 @@
 
   let interval;
   function countUp() {
+    if (decimalValue >= 255) return;
     isCounting = true;
     interval = setInterval(() => decimalValue++, 1000);
   }
@@ -46,7 +47,7 @@
       Pause
     </ControlButton>
   </LayoutRow>
-  <Byte bind:decimalValue={decimalValue} />
+  <Byte bind:decimalValue={decimalValue} bgColor={bgColor} />
   <div class="byte-inputs">
     <NumberInput bind:value={decimalValue} />
     <HexCode
