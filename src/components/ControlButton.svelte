@@ -9,6 +9,9 @@
 
 <style>
   button {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     height: 6rem;
     width: fit-content;
     /* weird css hack, does 50% of the short side */
@@ -17,6 +20,7 @@
 
     margin-right: 1rem;
     padding: .5rem;
+    padding-bottom: 1rem;
     background: none;
     border: .125rem solid #fff;
     border-top-width: 0;
