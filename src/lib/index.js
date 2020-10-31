@@ -44,12 +44,13 @@ export function toBase(num, base) {
 export function renderAsByte(binValue) {
   // throw error is value passed is not a string. We need a string so we can split it
   // and treat it as an array of digits.
-  if (typeof binValue !== 'string') throw new Error('binary value must be passed as a string');
+  if (typeof binValue !== 'string') console.warn('binary value must be passed as a string');
   
   const binValueAsArray = binValue.split('');
+  if (binValueAsArray.length > 8) return ['1', '1', '1', '1', '1', '1', '1', '1'];
   // check that the binValue only contians 1s and 0s.
   binValueAsArray.forEach(bit => {
-    if (bit !== '0' && bit !== '1') throw new Error('binary value can only contian 1s and 0s');
+    if (bit !== '0' && bit !== '1') console.warn('binary value can only contian 1s and 0s');
   });
 
   // create array of 0s. Array length is however many digits are required to make
@@ -72,7 +73,7 @@ export function renderDigits(num, digits) {
   // ----------
   // HANDLE NUM PARAM
   // ----------
-  if (typeof num !== 'string') throw new Error('num value must be presented as a string');
+  if (typeof num !== 'string') console.warn('num value must be presented as a string');
 
   // ----------
   // HANDLE DIGITS PARAM
@@ -88,4 +89,20 @@ export function renderDigits(num, digits) {
   const spaces = [...Array(digits - numAsArray.length)].map(() => '0');
   // join the spaces and the binValue together as a final, 8-char string.
   return [...spaces, ...numAsArray].join('');
+}
+
+
+export function binaryToDecimal(binValue) {
+  if (typeof binValue !== 'string') return;
+  if (binValue.length !== 8) {
+    console.error('value must be 8 bits in length');
+    return;
+  }
+
+  let total = 0;
+  binValue.split('').forEach((b, i) => {
+    if (b === '1') total += Math.pow(2, 8 - i - 1);
+  });
+
+  return total;
 }

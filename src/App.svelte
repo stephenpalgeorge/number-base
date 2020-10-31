@@ -1,4 +1,6 @@
 <script>
+  import { onDestroy, onMount } from 'svelte';
+
   import Byte from './components/Byte.svelte';
   import ControlButton from './components/ControlButton.svelte';
   import HexCode from './components/HexCode.svelte';
@@ -36,6 +38,19 @@
     isCounting = false;
     clearInterval(interval);
   }
+
+  function reset() {
+    if (isCounting) pauseCount();
+    decimalValue = 0;
+  }
+
+  function handleKeyup(e) {
+    if (e.keyCode === 32) isCounting ? pauseCount() : countUp();
+    if (e.keyCode === 27) reset();
+  }
+
+  onMount(() => document.addEventListener('keyup', handleKeyup));
+  onDestroy(() => document.removeEventListener('keyup', handleKeyup));
 </script>
 
 <main style="background: {bgColor};">
@@ -79,5 +94,6 @@
     width: 100%;
     max-width: var(--content-width);
     padding: 1rem;
+    margin-top: 1rem;
   }
 </style>

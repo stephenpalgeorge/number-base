@@ -1,18 +1,30 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
+
   export let borderColor;
+  export let index = 0;
   export let state = false;
+
+  const dispatch = createEventDispatcher();
+  function handleClick() {
+    state = !state;
+    dispatch('bitClick', {
+      index
+    });
+  }
 </script>
 
-<div style="border: .125rem solid {borderColor};" class="bit bit--{state ? 'on' : 'off'}">
-  <!-- <pre>
-    { JSON.stringify(state) }
-  </pre> -->
-</div>
+<div
+  on:click={handleClick}
+  style="border: .125rem solid {borderColor};"
+  class="bit bit--{state ? 'on' : 'off'} bit--{index}"
+></div>
 
 <style>
   .bit {
     width: 2rem;
     margin: 0 1rem;
+    cursor: pointer;
     background-color: #fff;
     box-shadow: .125rem .25rem .125rem 0 rgba(0, 0, 0, .12),
                 -.125rem -.25rem .125rem 0 rgba(255, 255, 255, .12),

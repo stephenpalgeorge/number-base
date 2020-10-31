@@ -24,7 +24,7 @@
       'A', 'B', 'C', 'D', 'E', 'F'
     ];
     for (const c of e.target.value) {
-      if (!hexValues.includes(c.toUpperCase())) throw new Error('value can only use numbers 0-9, and letters A-F')
+      if (!hexValues.includes(c.toUpperCase())) console.error('This can only use numbers 0-9, and letters A-F');
     }
     if (e.target.value.length === 4) {
       dispatch('baseColor', {
