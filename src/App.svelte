@@ -29,9 +29,16 @@
 
   let interval;
   function countUp() {
-    if (decimalValue >= 255) return;
+    if (decimalValue >= 255) pauseCount();
     isCounting = true;
-    interval = setInterval(() => decimalValue++, 1000);
+    interval = setInterval(() => {
+      if (decimalValue >= 255) {
+        decimalValue = 255;
+        pauseCount();
+      } else {
+        decimalValue++;
+      }
+    }, 1000);
   }
 
   function pauseCount() {

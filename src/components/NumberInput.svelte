@@ -2,10 +2,18 @@
   export let value = 0;
   export let min = 0;
   export let max = 255;
+
+  function handleFocus(e) {
+    if (e.target.valueAsNumber === 0) value = '';
+  }
+
+  function handleBlur(e) {
+    if (e.target.value === '') value = 0;
+  }
 </script>
 
 <div class="number-input">
-  <input type="number" bind:value="{ value }" min="{ min }" max="{ max }" />
+  <input type="number" bind:value="{ value }" on:focus={handleFocus} on:blur={handleBlur} min="{ min }" max="{ max }" />
 </div>
 
 <style>
