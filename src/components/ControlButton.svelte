@@ -20,10 +20,11 @@
 
     margin-right: 1rem;
     padding: .5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.2rem;
     background: none;
     border: .125rem solid #fff;
     border-top-width: 0;
+    font-size: 1rem;
     color: #fff;
     box-shadow: 0 .25rem .5rem .125rem rgba(0, 0, 0, .24);
     cursor: pointer;
@@ -44,7 +45,7 @@
 
   button:disabled {
     height: 4rem;
-    opacity: .8;
+    opacity: .6;
     cursor: auto;
   }
   button:disabled:hover {

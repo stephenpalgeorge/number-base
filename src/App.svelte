@@ -6,6 +6,7 @@
   import HexCode from './components/HexCode.svelte';
   import LayoutRow from './components/LayoutRow.svelte';
   import NumberInput from './components/NumberInput.svelte';
+  import Panel from './components/Panel.svelte';
 
   let decimalValue = 0;
   let baseColor = 'FF3F';
@@ -18,6 +19,7 @@
 
   // state variables
   let isCounting = false;
+  let showPanel = false;
 
   function setBgColor({ detail }) {
     bgColor = detail.color;
@@ -61,6 +63,10 @@
 </script>
 
 <main style="background: {bgColor};">
+  <button class="info" on:click={() => showPanel = !showPanel}>?</button>
+  {#if showPanel}
+    <Panel bind:showPanel={showPanel} />
+  {/if}
   <LayoutRow position='fixed' placement={controlsPlacement}>
     <ControlButton isDisabled={isCounting} action={countUp}>
       Count
@@ -83,7 +89,7 @@
 
 <style>
   main {
-    padding-top: 4rem;
+    position: relative;
     width: 100vw;
     height: 100vh;
 
@@ -93,6 +99,28 @@
     align-items: center;
 
     transition: background .2s ease-out;
+  }
+
+  button.info {
+    position: absolute;
+    top: 2rem;
+    right: 4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: none;
+    border: .125rem solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+
+    transition: background .2s ease-out, color .2s ease-out;
+  }
+  button.info:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  button.info:focus {
+    outline: none;
   }
 
   .byte-inputs {
