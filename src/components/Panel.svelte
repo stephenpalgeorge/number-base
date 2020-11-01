@@ -22,17 +22,6 @@
 </aside>
 
 <style>
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-
-    background-color: rgba(0, 0, 0, .24);
-  }
-
   aside {
     position: fixed;
     top: 0;
@@ -47,7 +36,7 @@
     color: #000;
     box-shadow: -.25rem 0 .5rem 0 rgba(0, 0, 0, .4);
 
-    z-index: 2;
+    z-index: 10;
   }
 
   button.close-panel {

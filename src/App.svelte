@@ -65,6 +65,7 @@
 <main style="background: {bgColor};">
   <button class="info" on:click={() => showPanel = !showPanel}>?</button>
   {#if showPanel}
+    <div class="overlay"></div>
     <Panel bind:showPanel={showPanel} />
   {/if}
   <LayoutRow position='fixed' placement={controlsPlacement}>
@@ -88,6 +89,17 @@
 </main>
 
 <style>
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+
+    background-color: rgba(0, 0, 0, .24);
+  }
+
   main {
     position: relative;
     width: 100vw;
