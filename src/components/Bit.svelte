@@ -33,6 +33,7 @@
     transition: height .2s ease-out;
   }
 
+
   .bit--on {
     height: 6rem;
     border-radius: 999px;
@@ -41,5 +42,20 @@
   .bit--off {
     height: 2rem;
     border-radius: 50%;
+  }
+
+  @media screen and (max-width: 736px) {
+    .bit {
+      width: 1.8rem;
+      margin: 0 .5rem;
+    }
+
+    .bit--on {
+      height: 4rem;
+    }
+
+    .bit--off {
+      height: 1.8rem;
+    }
   }
 </style>

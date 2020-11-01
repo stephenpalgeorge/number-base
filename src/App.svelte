@@ -143,4 +143,10 @@
     padding: 1rem;
     margin-top: 1rem;
   }
+
+  @media screen and (max-width: 736px) {
+    .byte-inputs {
+      padding: 1rem 2.5rem;
+    }
+  }
 </style>

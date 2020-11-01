@@ -75,13 +75,13 @@
     list-style-type: none;
   }
   li {
-    display: flex;
     margin-bottom: 1rem;
     font-weight: 300;
     line-height: 2;
   }
 
   pre {
+    display: inline;
     margin: 0 .5rem;
     padding: 0 .5rem;
     background-color: #d5d5d5;
