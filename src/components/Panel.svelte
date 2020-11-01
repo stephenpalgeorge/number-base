@@ -37,6 +37,7 @@
     box-shadow: -.25rem 0 .5rem 0 rgba(0, 0, 0, .4);
 
     z-index: 10;
+    overflow: scroll;
   }
 
   button.close-panel {
