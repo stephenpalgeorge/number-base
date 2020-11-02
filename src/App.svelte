@@ -58,6 +58,16 @@
     if (e.keyCode === 27) reset();
   }
 
+  function shiftLeft() {
+    if (decimalValue >= 128 || decimalValue === 0) return;
+    decimalValue *= 2;
+  }
+
+  function shiftRight() {
+    if (decimalValue < 2) return;
+    decimalValue = Math.floor(decimalValue / 2);
+  }
+
   onMount(() => document.addEventListener('keyup', handleKeyup));
   onDestroy(() => document.removeEventListener('keyup', handleKeyup));
 </script>
@@ -67,12 +77,19 @@
   {#if showPanel}
     <Panel bind:showPanel={showPanel} />
   {/if}
+
   <LayoutRow position='fixed' placement={controlsPlacement}>
     <ControlButton isDisabled={isCounting} action={countUp}>
       Count
     </ControlButton>
     <ControlButton isDisabled={!isCounting} action={pauseCount}>
       Pause
+    </ControlButton>
+    <ControlButton isDisabled={decimalValue >= 128 || decimalValue === 0} action={shiftLeft}>
+      &lt;&lt;
+    </ControlButton>
+    <ControlButton isDisabled={decimalValue < 2} action={shiftRight}>
+      &gt;&gt;
     </ControlButton>
   </LayoutRow>
   <Byte bind:decimalValue={decimalValue} bgColor={bgColor} />
