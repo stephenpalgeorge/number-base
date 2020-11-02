@@ -80,18 +80,10 @@
   {/if}
 
   <LayoutRow position='fixed' placement={controlsPlacement}>
-    <ControlButton isDisabled={isCounting} action={countUp}>
-      Count
-    </ControlButton>
-    <ControlButton isDisabled={!isCounting} action={pauseCount}>
-      Pause
-    </ControlButton>
-    <ControlButton isDisabled={decimalValue >= 128 || decimalValue === 0} action={shiftLeft}>
-      &lt;&lt;
-    </ControlButton>
-    <ControlButton isDisabled={decimalValue < 2} action={shiftRight}>
-      &gt;&gt;
-    </ControlButton>
+    <ControlButton isDisabled={isCounting} action={countUp}>Count</ControlButton>
+    <ControlButton isDisabled={!isCounting} action={pauseCount}>Pause</ControlButton>
+    <ControlButton isDisabled={decimalValue >= 128 || decimalValue === 0} action={shiftLeft}>&lt;&lt;</ControlButton>
+    <ControlButton isDisabled={decimalValue < 2} action={shiftRight}>&gt;&gt;</ControlButton>
   </LayoutRow>
   <Byte bind:decimalValue={decimalValue} bgColor={bgColor} />
   <div class="byte-inputs">
