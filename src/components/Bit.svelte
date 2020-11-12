@@ -2,6 +2,7 @@
   import { createEventDispatcher } from 'svelte';
 
   export let borderColor;
+  export let fgColor;
   export let index = 0;
   export let state = false;
 
@@ -17,7 +18,7 @@
 <div
   on:click={handleClick}
   style="border: .125rem solid {borderColor};"
-  class="bit bit--{state ? 'on' : 'off'} bit--{index}"
+  class="bit bit--{state ? 'on' : 'off'} bit--{index} {fgColor}"
 ></div>
 
 <style>
@@ -32,6 +33,9 @@
 
     transition: height .2s ease-out;
   }
+
+  .bit.light { background-color: #fff; }
+  .bit.dark { background-color: #000; }
 
 
   .bit--on {

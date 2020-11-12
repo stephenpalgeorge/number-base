@@ -7,6 +7,7 @@
 
   export let decimalValue = 0;
   export let bgColor;
+  export let fgColor;
   $: binaryValue = toBase(decimalValue, 2);
   $: byteValue = renderAsByte(binaryValue);
 
@@ -21,7 +22,7 @@
 
 <section>
   {#each byteValue as bit, i}
-    <Bit on:bitClick={handleBitClick} state={bit === '1'} index={i} borderColor={bgColor} />
+    <Bit on:bitClick={handleBitClick} state={bit === '1'} index={i} borderColor={bgColor} fgColor={fgColor} />
   {/each}
 </section>
 

@@ -1,5 +1,7 @@
 <script>
   import { onDestroy, onMount } from 'svelte';
+  
+  import { getForegroundColour } from './lib';
 
   import Byte from './components/Byte.svelte';
   import ControlButton from './components/ControlButton.svelte';
@@ -11,6 +13,7 @@
   let decimalValue = 0;
   let baseColor = 'FF3F';
   let bgColor = '#' + baseColor + '00';
+  $: fgColor = getForegroundColour(bgColor.replace('#', ''));
 
   let controlsPlacement = {
     top: 0,
@@ -21,13 +24,9 @@
   let isCounting = false;
   let showPanel = false;
 
-  function setBgColor({ detail }) {
-    bgColor = detail.color;
-  }
+  function setBgColor({ detail }) { bgColor = detail.color; }
 
-  function setBaseColor({ detail }) {
-    baseColor = detail.color;
-  }
+  function setBaseColor({ detail }) { baseColor = detail.color; }
 
   let interval;
   function countUp() {
@@ -85,7 +84,7 @@
     <ControlButton isDisabled={decimalValue >= 128 || decimalValue === 0 || decimalValue === ""} action={shiftLeft}>&lt;&lt;</ControlButton>
     <ControlButton isDisabled={decimalValue < 2} action={shiftRight}>&gt;&gt;</ControlButton>
   </LayoutRow>
-  <Byte bind:decimalValue={decimalValue} bgColor={bgColor} />
+  <Byte bind:decimalValue={decimalValue} bgColor={bgColor} fgColor={fgColor} />
   <div class="byte-inputs">
     <NumberInput bind:value={decimalValue} />
     <HexCode

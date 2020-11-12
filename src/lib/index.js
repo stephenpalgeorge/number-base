@@ -91,7 +91,13 @@ export function renderDigits(num, digits) {
   return [...spaces, ...numAsArray].join('');
 }
 
-
+/**
+ * FUNCTION - BINARY TO DECIMAL
+ * This function receives a binary value and turns it into a decimal value.
+ * 
+ * @param {String} binValue = the binary value (string of 1s and 0s)
+ * that should be converted.
+ */
 export function binaryToDecimal(binValue) {
   if (typeof binValue !== 'string') return;
   if (binValue.length !== 8) {
@@ -105,4 +111,23 @@ export function binaryToDecimal(binValue) {
   });
 
   return total;
+}
+
+/**
+ * FUNCTION - GET FOREGROUND COLOUR
+ * This function uses a hex colour to work out the brightness of the
+ * background, and returns 'light' or 'dark' as the colour to set the
+ * foreground elements.
+ * 
+ * @param {String} hex = the hexadecimal colour code that will be used
+ * to determine the colour of the text.
+ */
+export function getForegroundColour(hex) {
+  console.log('get foreground colour');
+  const r = parseInt(hex.substr(0, 2), 16);
+  const g = parseInt(hex.substr(2, 2), 16);
+  const b = parseInt(hex.substr(4, 2), 16);
+
+  const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+  return (yiq >= 128) ? 'dark' : 'light';
 }
