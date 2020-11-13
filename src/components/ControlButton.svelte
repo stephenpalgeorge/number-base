@@ -1,9 +1,10 @@
 <script>
   export let action = () => console.warn('you must provide an action');
   export let isDisabled = false;
+  export let fgColor;
 </script>
 
-<button disabled={isDisabled} on:click={action}>
+<button class="{fgColor}" disabled={isDisabled} on:click={action}>
   <slot></slot>
 </button>
 
@@ -25,7 +26,6 @@
     border: .125rem solid #fff;
     border-top-width: 0;
     font-size: 1rem;
-    color: #fff;
     box-shadow: 0 .25rem .5rem .125rem rgba(0, 0, 0, .24);
     cursor: pointer;
 
@@ -33,6 +33,14 @@
                 box-shadow .2s ease-out,
                 color .2s ease-out,
                 height .2s ease-out;
+  }
+  button.light {
+    color: #fff;
+    border-color: #fff;
+  }
+  button.dark {
+    color: #515151;
+    border-color: #515151;
   }
 
   button:hover,

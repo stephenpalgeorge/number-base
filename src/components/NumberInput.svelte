@@ -2,6 +2,7 @@
   export let value = 0;
   export let min = 0;
   export let max = 255;
+  export let fgColor;
 
   function handleFocus(e) {
     if (e.target.valueAsNumber === 0) value = '';
@@ -13,7 +14,7 @@
 </script>
 
 <div class="number-input">
-  <input type="number" bind:value="{ value }" on:focus={handleFocus} on:blur={handleBlur} min="{ min }" max="{ max }" />
+  <input class="{fgColor}" type="number" bind:value="{ value }" on:focus={handleFocus} on:blur={handleBlur} min="{ min }" max="{ max }" />
 </div>
 
 <style>
@@ -23,15 +24,24 @@
   }
 
   input {
-    color: #fff;
     background: none;
     border: none;
     font-size: 1.4rem;
     border-bottom: .125rem solid #fff;
+    transition: color .2s ease-out, border .2s ease-out;
   }
   input:focus {
     outline: none;
     background-color: var(--input-background--focus);
+  }
+
+  input.light {
+    color: #fff;
+    border-color: #fff;
+  }
+  input.dark {
+    color: #515151;
+    border-color: #515151;
   }
 
   /* Chrome, Safari, Edge, Opera */

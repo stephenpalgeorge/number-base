@@ -123,7 +123,6 @@ export function binaryToDecimal(binValue) {
  * to determine the colour of the text.
  */
 export function getForegroundColour(hex) {
-  console.log('get foreground colour');
   const r = parseInt(hex.substr(0, 2), 16);
   const g = parseInt(hex.substr(2, 2), 16);
   const b = parseInt(hex.substr(4, 2), 16);

@@ -72,26 +72,43 @@
 </script>
 
 <main style="background: {bgColor};">
-  <button class="info" on:click={() => showPanel = !showPanel}>?</button>
+  <button class="info {fgColor}" on:click={() => showPanel = !showPanel}>?</button>
   {#if showPanel}
     <div class="overlay"></div>
     <Panel bind:showPanel={showPanel} />
   {/if}
 
   <LayoutRow position='fixed' placement={controlsPlacement}>
-    <ControlButton isDisabled={isCounting} action={countUp}>Count</ControlButton>
-    <ControlButton isDisabled={!isCounting} action={pauseCount}>Pause</ControlButton>
-    <ControlButton isDisabled={decimalValue >= 128 || decimalValue === 0 || decimalValue === ""} action={shiftLeft}>&lt;&lt;</ControlButton>
-    <ControlButton isDisabled={decimalValue < 2} action={shiftRight}>&gt;&gt;</ControlButton>
+    <ControlButton
+      isDisabled={isCounting}
+      action={countUp}
+      fgColor={fgColor}
+    >Count</ControlButton>
+    <ControlButton
+      isDisabled={!isCounting}
+      action={pauseCount}
+      fgColor={fgColor}
+    >Pause</ControlButton>
+    <ControlButton
+      isDisabled={decimalValue >= 128 || decimalValue === 0 || decimalValue === ""}
+      action={shiftLeft}
+      fgColor={fgColor}
+    >&lt;&lt;</ControlButton>
+    <ControlButton
+      isDisabled={decimalValue < 2}
+      action={shiftRight}
+      fgColor={fgColor}
+    >&gt;&gt;</ControlButton>
   </LayoutRow>
   <Byte bind:decimalValue={decimalValue} bgColor={bgColor} fgColor={fgColor} />
   <div class="byte-inputs">
-    <NumberInput bind:value={decimalValue} />
+    <NumberInput bind:value={decimalValue} fgColor={fgColor} />
     <HexCode
       on:background={setBgColor}
       on:baseColor={setBaseColor}
       bind:decimalValue={decimalValue}
       bind:baseColor={baseColor}
+      fgColor={fgColor}
     />
   </div>
 </main>
@@ -135,9 +152,22 @@
 
     transition: background .2s ease-out, color .2s ease-out;
   }
-  button.info:hover {
+  button.info.light {
+    color: #fff;
+    border-color: #fff;
+  }
+  button.info.dark {
+    color: #515151;
+    border-color: #515151;
+  }
+
+  button.info.light:hover {
     background-color: #fff;
-    color: #000;
+    color: #515151;
+  }
+  button.info.dark:hover {
+    background-color: #515151;
+    color: #fff;
   }
   button.info:focus {
     outline: none;

@@ -31,12 +31,11 @@
                 -.125rem -.25rem .125rem 0 rgba(255, 255, 255, .12),
                 inset .125rem .25rem .125rem 0 rgba(0, 0, 0, .12);
 
-    transition: height .2s ease-out;
+    transition: height .2s ease-out, background .2s ease-out;
   }
 
   .bit.light { background-color: #fff; }
-  .bit.dark { background-color: #000; }
-
+  .bit.dark { background-color: #515151; }
 
   .bit--on {
     height: 6rem;

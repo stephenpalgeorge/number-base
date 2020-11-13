@@ -4,6 +4,7 @@
 
   export let baseColor = 'FF3F';
   export let decimalValue = '0';
+  export let fgColor;
 
   $: hexValue = toBase(decimalValue, 16);
   let byteValue;
@@ -37,14 +38,13 @@
 </script>
 
 <div class="hex-code">
-  <p>#<input type="text" maxlength="4" size="4" value={baseColor} on:input={handleBaseColor} />{byteValue.toUpperCase()}</p>
+  <p class="{fgColor}">#<input type="text" maxlength="4" size="4" value={baseColor} on:input={handleBaseColor} />{byteValue.toUpperCase()}</p>
 </div>
 
 <style>
-  p {
-    color: #fff;
-    font-size: 1.4rem;
-  }
+  p { font-size: 1.4rem; }
+  p.light { color: #fff; }
+  p.dark { color: #515151; }
 
   input {
     color: inherit;
